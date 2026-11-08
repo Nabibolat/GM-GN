@@ -2,6 +2,13 @@
 
 A minimal on-chain greeting dApp. Connect MetaMask, choose Base Mainnet or LitVM LiteForge Testnet, then publish a GM or GN greeting on the selected chain.
 
+## Deployed contracts
+
+| Network | Chain ID | Contract | Verification |
+|---|---:|---|---|
+| Base Mainnet | 8453 | [`0x9B62577c1f7C551F98f181FDd0B08e73B280C6a8`](https://basescan.org/address/0x9B62577c1f7C551F98f181FDd0B08e73B280C6a8) | Verified on BaseScan |
+| LitVM LiteForge Testnet | 4441 | [`0x331B2d0BC5E2A819117Bd4F552563F045d757b1B`](https://liteforge.explorer.caldera.xyz/address/0x331B2d0BC5E2A819117Bd4F552563F045d757b1B) | Not verified |
+
 ## Networks
 
 | Network | Chain ID | Native gas token | RPC | Explorer |
@@ -56,4 +63,4 @@ Each greeting emits an indexed event containing the sender and a timestamp, and 
 
 ## Deployment status
 
-The repository contains source code and deployment instructions. Contract addresses must be filled in after deployment; the dApp intentionally disables on-chain greeting buttons until the relevant address is configured.
+The Base Mainnet contract address is configured in the GitHub Pages deployment workflow and in `frontend/.env.example`. The LitVM address is configured in the frontend as its default. The dApp reads counters and sends GM/GN transactions on the selected network.
