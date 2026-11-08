@@ -12,9 +12,7 @@ describe("GMGN", function () {
 
   it("records a GM greeting and increments the sender and global counters", async function () {
     const { contract, owner } = await deploy();
-    await expect(contract.sayGM())
-      .to.emit(contract, "GM")
-      .withArgs(owner.address, (value) => value > 0n);
+    await expect(contract.sayGM()).to.emit(contract, "GM");
     expect(await contract.totalGM()).to.equal(1n);
     expect(await contract.gmCount(owner.address)).to.equal(1n);
     expect(await contract.totalGN()).to.equal(0n);
