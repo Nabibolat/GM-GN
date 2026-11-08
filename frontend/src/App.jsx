@@ -159,7 +159,6 @@ export default function App() {
 
   return <main className={chainId === 4441 ? "app night-mode" : "app"}>
     <header className="topbar">
-      <div className="brand"><span className="brand-mark">☀</span><span>GM<span className="brand-dash">-</span>GN</span></div>
       <div className="wallet-actions">
         <div className="network-wrap">
           <button className="network-button" onClick={() => setMenuOpen(!menuOpen)}><Network size={16}/><span>{networkLabel}</span><ChevronDown size={15}/></button>
@@ -169,6 +168,7 @@ export default function App() {
         </div>
         <button className="connect-button" onClick={connectWallet}><Wallet size={16}/>{account ? shortAddress(account) : "Connect Wallet"}</button>
       </div>
+      <div className="brand"><span className="brand-mark">☀</span><span>GM<span className="brand-dash">-</span>GN</span></div>
     </header>
 
     <section className="hero">
