@@ -11,7 +11,7 @@ const NETWORKS = {
   4441: {
     id: 4441, hex: "0x1159", name: "LitVM Testnet", symbol: "zkLTC",
     rpc: "https://liteforge.rpc.caldera.xyz/http", explorer: "https://liteforge.explorer.caldera.xyz",
-    contract: import.meta.env.VITE_GMGN_LITVM_ADDRESS || ""
+    contract: import.meta.env.VITE_GMGN_LITVM_ADDRESS || "0x331B2d0BC5E2A819117Bd4F552563F045d757b1B"
   }
 };
 
