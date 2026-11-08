@@ -1,0 +1,55 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=DM+Sans:wght@400;500;600;700;800&family=Space+Grotesk:wght@400;500;600;700&display=swap');
+
+:root{font-family:'DM Sans',sans-serif;color:#1c211c;background:#fffdf7;font-synthesis:none;text-rendering:optimizeLegibility}
+*{box-sizing:border-box}
+body{margin:0;min-width:320px;min-height:100vh;background:radial-gradient(ellipse at 50% 36%,#fff9d9 0%,#fffdf7 47%,#f7fbf8 100%)}
+button{font:inherit}
+.app{max-width:1200px;min-height:100vh;margin:0 auto;padding:24px 48px 20px;display:flex;flex-direction:column;transition:background .35s}
+.topbar{display:flex;justify-content:space-between;align-items:center;gap:18px}
+.brand{display:flex;align-items:center;gap:9px;font-family:'Space Grotesk',sans-serif;font-size:21px;font-weight:700;letter-spacing:-1px}
+.brand-mark{color:#e9aa19;font-size:25px}.brand-dash{color:#d7a51c}
+.wallet-actions{display:flex;gap:10px;align-items:center}
+.network-wrap{position:relative}
+.network-button,.connect-button{height:42px;border:1px solid #dfe5dc;border-radius:8px;background:#fff;color:#253229;padding:0 14px;display:flex;align-items:center;gap:9px;font-size:13px;font-weight:600;cursor:pointer;box-shadow:0 2px 8px #283d2010}
+.connect-button{background:#1eaa59;border-color:#1eaa59;color:white;padding:0 17px}
+.network-button:hover{border-color:#8bbd96}.connect-button:hover{background:#168c49}
+.network-menu{position:absolute;z-index:5;right:0;top:48px;min-width:210px;background:white;border:1px solid #e3e7df;border-radius:10px;padding:6px;box-shadow:0 12px 35px #20302020}
+.network-menu button{display:block;width:100%;border:0;background:white;text-align:left;padding:11px;border-radius:6px;cursor:pointer;color:#26332a;font-size:13px}
+.network-menu button:hover{background:#f1f7ef}
+.hero{text-align:center;padding-top:54px}
+.eyebrow{font-family:'DM Mono',monospace;font-size:10px;letter-spacing:2.3px;color:#899286}
+h1{font-family:'Space Grotesk',sans-serif;font-size:clamp(43px,6vw,70px);line-height:.99;letter-spacing:-4px;margin:18px 0 15px;font-weight:600}
+h1 span{color:#d6a11a}
+.intro{font-size:15px;line-height:1.65;color:#7c857a;margin:0}
+.celestial-stage{display:flex;justify-content:center;align-items:center;gap:clamp(30px,9vw,125px);margin:28px auto 18px;max-width:720px}
+.celestial-card{position:relative;border:0;background:transparent;cursor:pointer;display:flex;flex-direction:column;align-items:center;width:230px;color:#1e261e;padding:0 10px 12px;transition:transform .2s}
+.celestial-card:hover{transform:translateY(-5px)}.celestial-card:disabled{opacity:.65;cursor:wait}
+.sun-art,.moon-art{height:208px;width:208px;display:grid;place-items:center;position:relative}
+.sun-icon{width:190px;height:190px;color:#f6c62c;fill:#ffdf52;filter:drop-shadow(0 0 24px #ffdc6380);animation:sun-breathe 5s ease-in-out infinite}
+.sun-glow{position:absolute;width:125px;height:125px;border-radius:50%;background:#fff4a0;filter:blur(35px);z-index:-1}
+.moon-icon{width:174px;height:174px;color:#d6a526;fill:#f5d66a;filter:drop-shadow(0 0 24px #e9c75a70);transform:rotate(-22deg)}
+.moon-art:before{content:"";position:absolute;width:140px;height:140px;border-radius:50%;background:#fffdf7;transform:translate(-25px,-10px);z-index:1}
+.moon-icon{z-index:0}.moon-art{isolation:isolate}.moon-art:before{z-index:2;pointer-events:none}
+.moon-star{position:absolute;color:#e0b42e;z-index:3;font-size:21px}.star-one{top:16px;right:13px}.star-two{bottom:32px;left:12px;font-size:17px}.star-three{top:80px;left:18px}
+.greeting-label{font-family:'Space Grotesk',sans-serif;font-size:42px;line-height:1;font-weight:700;letter-spacing:-2px}
+.greeting-sub{font-family:'DM Mono',monospace;font-size:10px;letter-spacing:2px;color:#91988d;margin-top:7px}
+.button-loading{position:absolute;bottom:-16px;font-size:11px;color:#6e796c;display:flex;align-items:center;gap:5px}
+.chain-caption{display:flex;justify-content:center;align-items:center;gap:9px;font-family:'DM Mono',monospace;font-size:10px;color:#899286;letter-spacing:.4px;margin-top:14px}
+.live-dot{width:7px;height:7px;border-radius:50%;background:#31b76a;box-shadow:0 0 0 3px #31b76a20}
+.caption-divider{color:#c8cfc5}
+.stats{display:flex;justify-content:center;align-items:center;gap:55px;margin:37px auto 20px;padding:17px 45px;border:1px solid #e9eadf;border-radius:12px;background:#ffffffa8;min-width:330px}
+.stat{display:grid;grid-template-columns:auto auto;column-gap:9px;align-items:center}
+.stat-icon{grid-row:span 2;color:#e8b329;font-size:24px}.moon-stat{color:#c7a044}
+.stat strong{font-family:'Space Grotesk',sans-serif;font-size:22px;line-height:1.1}.stat>span:last-child{font-family:'DM Mono',monospace;font-size:9px;letter-spacing:1.5px;color:#92998e}
+.stat-line{height:34px;width:1px;background:#e8e9df}
+.notice{max-width:550px;width:100%;margin:8px auto 14px;padding:13px 15px;border-radius:9px;display:flex;align-items:flex-start;gap:10px;font-size:12px;line-height:1.5}
+.notice.success{background:#eaf8ee;color:#247441}.notice.error{background:#fff0eb;color:#a44831}.notice.pending{background:#eef4ff;color:#345b91}
+.notice a{display:flex;align-items:center;gap:5px;margin-top:4px;color:inherit;font-weight:700;text-decoration:none}
+.history{max-width:550px;width:100%;margin:10px auto 20px}
+.history h2{font:10px 'DM Mono',monospace;letter-spacing:1.8px;color:#899286}
+.history-row{display:flex;align-items:center;gap:15px;padding:10px 0;border-bottom:1px solid #eceee7;font-size:12px}.history-row span:nth-child(2){margin-left:auto;color:#8c9489;font-family:'DM Mono',monospace;font-size:10px}.history-row a{color:#8c9489}
+footer{display:flex;justify-content:space-between;margin-top:auto;padding-top:35px;color:#a0a69d;font:9px 'DM Mono',monospace;letter-spacing:1px}
+.night-mode{background:radial-gradient(ellipse at 50% 38%,#f4f0dc 0%,#fffdf7 54%,#f5f7fc 100%)}
+.spin{animation:spin 1s linear infinite}
+@keyframes spin{to{transform:rotate(360deg)}}@keyframes sun-breathe{50%{filter:drop-shadow(0 0 34px #ffdc63b0);transform:scale(1.025)}}
+@media(max-width:650px){.app{padding:17px 18px 16px}.topbar{align-items:flex-start}.brand{font-size:18px}.wallet-actions{gap:6px}.network-button,.connect-button{height:38px;padding:0 9px;font-size:11px;gap:5px}.network-button span{max-width:95px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}.connect-button{padding:0 10px}.hero{padding-top:58px}h1{letter-spacing:-2.5px}.celestial-stage{gap:8px;margin-top:30px}.celestial-card{width:50%;padding:0 2px}.sun-art,.moon-art{height:160px;width:160px}.sun-icon{width:148px;height:148px}.moon-icon{width:140px;height:140px}.moon-art:before{width:112px;height:112px}.greeting-label{font-size:35px}.stats{gap:30px;padding:14px 26px;min-width:0}.stat strong{font-size:19px}footer{font-size:8px;letter-spacing:.5px}}
