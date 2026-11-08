@@ -1,0 +1,16 @@
+{
+  "name": "gm-gn",
+  "version": "1.0.0",
+  "private": true,
+  "description": "GM-GN on-chain greeting dApp for Base and LitVM",
+  "scripts": {
+    "compile": "hardhat compile",
+    "deploy:base": "hardhat run scripts/deploy.cjs --network base",
+    "deploy:litvm": "hardhat run scripts/deploy.cjs --network litvm"
+  },
+  "devDependencies": {
+    "@nomicfoundation/hardhat-toolbox": "^5.0.0",
+    "dotenv": "^16.4.5",
+    "hardhat": "^2.22.17"
+  }
+}
