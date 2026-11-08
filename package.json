@@ -6,7 +6,8 @@
   "scripts": {
     "compile": "hardhat compile",
     "deploy:base": "hardhat run scripts/deploy.cjs --network base",
-    "deploy:litvm": "hardhat run scripts/deploy.cjs --network litvm"
+    "deploy:litvm": "hardhat run scripts/deploy.cjs --network litvm",
+    "test": "hardhat test"
   },
   "devDependencies": {
     "@nomicfoundation/hardhat-toolbox": "^5.0.0",
