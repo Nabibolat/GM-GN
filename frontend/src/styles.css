@@ -53,3 +53,46 @@ footer{display:flex;justify-content:space-between;margin-top:auto;padding-top:35
 .spin{animation:spin 1s linear infinite}
 @keyframes spin{to{transform:rotate(360deg)}}@keyframes sun-breathe{50%{filter:drop-shadow(0 0 34px #ffdc63b0);transform:scale(1.025)}}
 @media(max-width:650px){.app{padding:17px 18px 16px}.topbar{align-items:flex-start}.brand{font-size:18px}.wallet-actions{gap:6px}.network-button,.connect-button{height:38px;padding:0 9px;font-size:11px;gap:5px}.network-button span{max-width:95px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}.connect-button{padding:0 10px}.hero{padding-top:58px}h1{letter-spacing:-2.5px}.celestial-stage{gap:8px;margin-top:30px}.celestial-card{width:50%;padding:0 2px}.sun-art,.moon-art{height:160px;width:160px}.sun-icon{width:148px;height:148px}.moon-icon{width:140px;height:140px}.moon-art:before{width:112px;height:112px}.greeting-label{font-size:35px}.stats{gap:30px;padding:14px 26px;min-width:0}.stat strong{font-size:19px}footer{font-size:8px;letter-spacing:.5px}}
+
+
+/* Refined crescent + interactive day/night atmosphere */
+body:has(.app.night-mode){background:#0b1226}
+.app{background:transparent}
+.moon-icon{display:none}
+.moon-art:before{content:"";position:absolute;width:138px;height:138px;border-radius:50%;background:linear-gradient(145deg,#fff4b7 0%,#f2c94c 72%,#d99b20 100%);box-shadow:0 10px 28px #d6a52635;transform:translate(-1px,0);z-index:1}
+.moon-art:after{content:"";position:absolute;width:128px;height:128px;border-radius:50%;background:#fffdf7;transform:translate(37px,-25px);z-index:2}
+.moon-star{z-index:3;text-shadow:0 0 12px #e9c75a70}
+.app.night-mode{color:#edf1ff;background:radial-gradient(ellipse at 50% 34%,#26345a 0%,#151f3c 45%,#0b1226 100%);--night-ink:#edf1ff}
+.night-mode .brand,.night-mode .greeting-label{color:#f1f3ff}
+.night-mode .brand-mark,.night-mode .brand-dash{color:#e8c66b}
+.night-mode .eyebrow,.night-mode .greeting-sub,.night-mode .chain-caption,.night-mode footer{color:#a7b3d2}
+.night-mode h1{color:#f3f4ff}
+.night-mode h1 span{color:#e9c66a}
+.night-mode .intro{color:#bac5df}
+.night-mode .network-button{background:#202c4b;border-color:#3a496d;color:#eef2ff}
+.night-mode .connect-button{background:#238d60;border-color:#238d60}
+.night-mode .network-menu{background:#202c4b;border-color:#3a496d}
+.night-mode .network-menu button{background:#202c4b;color:#eef2ff}
+.night-mode .network-menu button:hover{background:#2c3a5e}
+.night-mode .moon-art:before{background:linear-gradient(145deg,#fff8d9 0%,#e8dcae 75%,#c9b77d 100%);box-shadow:0 0 42px #d9d5ad40}
+.night-mode .moon-art:after{background:#1a2544}
+.night-mode .sun-icon{opacity:.58;filter:drop-shadow(0 0 18px #e8bd4c55)}
+.night-mode .sun-glow{opacity:.18}
+.night-mode .moon-star{color:#f5df9b;text-shadow:0 0 14px #f5df9b80}
+.night-mode .stats{background:#1b2745cc;border-color:#394768}
+.night-mode .stat strong{color:#f0f2ff}
+.night-mode .stat-icon{color:#e7c36b}
+.night-mode .stat>span:last-child{color:#a7b3d2}
+.night-mode .stat-line{background:#3a4868}
+.night-mode .history h2{color:#a7b3d2}
+.night-mode .history-row{border-color:#34415f;color:#e9edff}
+.night-mode .history-row span:nth-child(2),.night-mode .history-row a{color:#a7b3d2}
+.night-mode .notice.success{background:#183d39;color:#a8f0ce}
+.night-mode .notice.error{background:#492b37;color:#ffc1c1}
+.night-mode .notice.pending{background:#25385f;color:#c6d8ff}
+.night-mode .live-dot{background:#64dfa2;box-shadow:0 0 0 3px #64dfa222}
+.night-mode .moon-card{filter:drop-shadow(0 8px 25px #050a1b40)}
+@keyframes star-twinkle{0%,100%{opacity:.55;transform:scale(.88)}50%{opacity:1;transform:scale(1.12)}}
+.night-mode .star-one{animation:star-twinkle 2.8s ease-in-out infinite}
+.night-mode .star-two{animation:star-twinkle 3.4s ease-in-out infinite .5s}
+.night-mode .star-three{animation:star-twinkle 2.5s ease-in-out infinite 1s}
