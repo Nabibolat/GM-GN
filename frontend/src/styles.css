@@ -96,3 +96,5 @@ body:has(.app.night-mode){background:#0b1226}
 .night-mode .star-one{animation:star-twinkle 2.8s ease-in-out infinite}
 .night-mode .star-two{animation:star-twinkle 3.4s ease-in-out infinite .5s}
 .night-mode .star-three{animation:star-twinkle 2.5s ease-in-out infinite 1s}
+
+@media(max-width:650px){.moon-art:after{width:104px;height:104px;transform:translate(30px,-20px)}}
