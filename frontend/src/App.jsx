@@ -38,6 +38,7 @@ export default function App() {
   const [counts, setCounts] = useState({ gm: "—", gn: "—" });
   const [history, setHistory] = useState([]);
   const [menuOpen, setMenuOpen] = useState(false);
+  const [isNight, setIsNight] = useState(false);
 
   const network = NETWORKS[chainId];
   const contractAddress = network?.contract;
@@ -130,6 +131,7 @@ export default function App() {
   }
 
   async function sendGreeting(kind) {
+    setIsNight(kind === "GN");
     setNotice(null);
     if (!account) { await connectWallet(); return; }
     if (!network) { setNotice({ type: "error", text: "Выберите Base Mainnet или LitVM Testnet." }); return; }
@@ -157,7 +159,7 @@ export default function App() {
 
   const networkLabel = network?.name || (chainId ? `Неизвестная сеть (${chainId})` : "Сеть не выбрана");
 
-  return <main className={chainId === 4441 ? "app night-mode" : "app"}>
+  return <main className={isNight ? "app night-mode" : "app"}>
     <header className="topbar">
       <div className="wallet-actions">
         <div className="network-wrap">
@@ -183,7 +185,7 @@ export default function App() {
           {busy === "GM" && <span className="button-loading"><LoaderCircle className="spin" size={18}/> Sending…</span>}
         </button>
         <button className="celestial-card moon-card" onClick={() => sendGreeting("GN")} disabled={Boolean(busy)}>
-          <div className="moon-art"><Moon className="moon-icon" strokeWidth={1.2}/><span className="moon-star star-one">✦</span><span className="moon-star star-two">✧</span><span className="moon-star star-three">·</span></div>
+          <div className="moon-art"><span className="moon-star star-one">✦</span><span className="moon-star star-two">✧</span><span className="moon-star star-three">·</span></div>
           <span className="greeting-label">GN</span><span className="greeting-sub">GOOD NIGHT</span>
           {busy === "GN" && <span className="button-loading"><LoaderCircle className="spin" size={18}/> Sending…</span>}
         </button>
