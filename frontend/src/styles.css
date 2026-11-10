@@ -60,7 +60,7 @@ body:has(.app.night-mode){background:#0b1226}
 .app{background:transparent}
 .moon-icon{display:none}
 .moon-art:before{content:"";position:absolute;width:138px;height:138px;border-radius:50%;background:linear-gradient(145deg,#fff4b7 0%,#f2c94c 72%,#d99b20 100%);box-shadow:0 10px 28px #d6a52635;transform:translate(-1px,0);z-index:1}
-.moon-art:after{content:"";position:absolute;width:128px;height:128px;border-radius:50%;background:#fffdf7;transform:translate(37px,-25px);z-index:2}
+.moon-art:after{content:"";position:absolute;width:128px;height:128px;border-radius:50%;background:#fffdf7;transform:translate(-37px,-25px);z-index:2}
 .moon-star{z-index:3;text-shadow:0 0 12px #e9c75a70}
 .app.night-mode{color:#edf1ff;background:radial-gradient(ellipse at 50% 34%,#26345a 0%,#151f3c 45%,#0b1226 100%);--night-ink:#edf1ff}
 .night-mode .brand,.night-mode .greeting-label{color:#f1f3ff}
