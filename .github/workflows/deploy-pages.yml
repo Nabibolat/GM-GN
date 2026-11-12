@@ -36,6 +36,7 @@ jobs:
         working-directory: frontend
         env:
           VITE_GMGN_BASE_ADDRESS: "0x9B62577c1f7C551F98f181FDd0B08e73B280C6a8"
+          VITE_GMGN_GIWA_ADDRESS: "0x7f89a232767C64aEe9e74323aaAfB806d2709025"
         run: npm run build
       - name: Upload Pages artifact
         uses: actions/upload-pages-artifact@v3
