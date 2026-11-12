@@ -12,6 +12,11 @@ const NETWORKS = {
     id: 4441, hex: "0x1159", name: "LitVM Testnet", symbol: "zkLTC",
     rpc: "https://liteforge.rpc.caldera.xyz/http", explorer: "https://liteforge.explorer.caldera.xyz",
     contract: import.meta.env.VITE_GMGN_LITVM_ADDRESS || "0x331B2d0BC5E2A819117Bd4F552563F045d757b1B"
+  },
+  91342: {
+    id: 91342, hex: "0x164ce", name: "GIWA Sepolia", symbol: "ETH",
+    rpc: "https://sepolia-rpc.giwa.io", explorer: "https://sepolia-explorer.giwa.io",
+    contract: import.meta.env.VITE_GMGN_GIWA_ADDRESS || "0x7f89a232767C64aEe9e74323aaAfB806d2709025"
   }
 };
 
@@ -134,7 +139,7 @@ export default function App() {
     setIsNight(kind === "GN");
     setNotice(null);
     if (!account) { await connectWallet(); return; }
-    if (!network) { setNotice({ type: "error", text: "Выберите Base Mainnet или LitVM Testnet." }); return; }
+    if (!network) { setNotice({ type: "error", text: "Выберите Base Mainnet, LitVM Testnet или GIWA Sepolia." }); return; }
     if (!configured) {
       setNotice({ type: "error", text: `Контракт для сети ${network.name} ещё не задеплоен или адрес не указан в frontend/.env.` });
       return;
