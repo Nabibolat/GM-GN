@@ -37,7 +37,7 @@ The Base Mainnet contract source is published and marked **Exact Match** by Base
 
 ## ERC-8021 Builder Code attribution
 
-Base Mainnet GM/GN transactions include the registered ERC-8021 Builder Code:
+Base Mainnet GM/GN transactions include the registered ERC-8021 Builder Code. See the [official Base Builder Codes specification](https://docs.base.org/specifications/builder-codes/overview) for the protocol overview, attribution model, and verification guidance.
 
 ```text
 bc_f1pfmy4r
