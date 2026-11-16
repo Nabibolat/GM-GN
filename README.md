@@ -10,6 +10,10 @@ A minimal on-chain greeting dApp. Connect MetaMask, choose Base Mainnet, LitVM L
 | LitVM LiteForge Testnet | 4441 | [`0x331B2d0BC5E2A819117Bd4F552563F045d757b1B`](https://liteforge.explorer.caldera.xyz/address/0x331B2d0BC5E2A819117Bd4F552563F045d757b1B) | Not verified |
 | GIWA Sepolia | 91342 | [`0x7f89a232767C64aEe9e74323aaAfB806d2709025`](https://sepolia-explorer.giwa.io/address/0x7f89a232767C64aEe9e74323aaAfB806d2709025) | Not yet confirmed |
 
+## Base Builder Code attribution
+
+The frontend appends the registered ERC-8021 Builder Code `bc_f1pfmy4r` to GM/GN transaction calldata on Base Mainnet only. LitVM and GIWA transactions are sent unchanged. This is transaction attribution metadata; it does not change the GM-GN contract and does not guarantee rewards.
+
 ## Networks
 
 | Network | Chain ID | Native gas token | RPC | Explorer |
