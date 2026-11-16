@@ -20,6 +20,18 @@ const NETWORKS = {
   }
 };
 
+// Base Builder Code (ERC-8021). Applied only to Base Mainnet transactions.
+const BASE_BUILDER_CODE = "bc_f1pfmy4r";
+const ERC8021_SUFFIX_MARKER = "8021".repeat(8);
+
+function getBuilderCodeSuffix(code) {
+  const bytes = Array.from(new TextEncoder().encode(code));
+  if (bytes.length > 255) throw new Error("Builder Code is too long for ERC-8021 schema 0.");
+  const codeHex = bytes.map((byte) => byte.toString(16).padStart(2, "0")).join("");
+  const lengthHex = bytes.length.toString(16).padStart(2, "0");
+  return `0x${codeHex}${lengthHex}00${ERC8021_SUFFIX_MARKER}`;
+}
+
 const ABI = [
   "function sayGM() external",
   "function sayGN() external",
@@ -149,7 +161,18 @@ export default function App() {
       const provider = new BrowserProvider(window.ethereum);
       const signer = await provider.getSigner();
       const contract = new Contract(contractAddress, ABI, signer);
-      const tx = await (kind === "GM" ? contract.sayGM() : contract.sayGN());
+      const method = kind === "GM" ? contract.sayGM : contract.sayGN;
+      let tx;
+      if (chainId === 8453) {
+        const request = await method.populateTransaction();
+        const suffix = getBuilderCodeSuffix(BASE_BUILDER_CODE);
+        tx = await signer.sendTransaction({
+          ...request,
+          data: `${request.data}${suffix.slice(2)}`
+        });
+      } else {
+        tx = await method();
+      }
       setNotice({ type: "pending", text: "Транзакция отправлена. Ожидаем подтверждения в блокчейне…", hash: tx.hash });
       const receipt = await tx.wait();
       setHistory((items) => [{ kind, hash: tx.hash, block: receipt.blockNumber, time: new Date().toLocaleString() }, ...items].slice(0, 5));
