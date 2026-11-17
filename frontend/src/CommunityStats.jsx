@@ -84,7 +84,8 @@ function calculateProfile(wallet, rows) {
 
 async function findDeploymentBlock(provider, address, latest) {
   const key = `gmgn:deployment:${address.toLowerCase()}`;
-  const cached = Number(localStorage.getItem(key));
+  const cachedValue = localStorage.getItem(key);
+  const cached = cachedValue === null ? Number.NaN : Number(cachedValue);
   if (Number.isSafeInteger(cached) && cached >= 0 && cached <= latest) return { block: cached, complete: true };
   const latestCode = await provider.getCode(address, latest);
   if (!latestCode || latestCode === "0x") throw new Error("Contract code was not found on this network.");
@@ -159,15 +160,16 @@ export default function CommunityStats({ network, account }) {
     setLoading(true);
     setError("");
     setProgress(0);
+    let provider;
     try {
-      const provider = new JsonRpcProvider(network.rpc, network.id);
+      provider = new JsonRpcProvider(network.rpc, network.id);
       const result = await readCommunity(provider, contractAddress, setProgress);
       setData(result);
       setUpdatedAt(new Date());
-      provider.destroy();
     } catch (e) {
       setError(e?.shortMessage || e?.message || "Could not load on-chain activity.");
     } finally {
+      provider?.destroy();
       setLoading(false);
     }
   }
