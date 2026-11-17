@@ -1,6 +1,7 @@
 import { useEffect, useMemo, useState } from "react";
 import { BrowserProvider, Contract } from "ethers";
 import { Sun, Moon, Wallet, ChevronDown, ExternalLink, CheckCircle2, AlertCircle, LoaderCircle, Network } from "lucide-react";
+import CommunityStats from "./CommunityStats.jsx";
 
 const NETWORKS = {
   8453: {
@@ -234,6 +235,8 @@ export default function App() {
     </div>}
 
     {history.length > 0 && <section className="history"><h2>YOUR RECENT GREETINGS</h2>{history.map((item) => <div className="history-row" key={item.hash}><span>{item.kind === "GM" ? "☀️" : "🌙"} {item.kind}</span><span>{item.time}</span><a href={`${network.explorer}/tx/${item.hash}`} target="_blank" rel="noreferrer"><ExternalLink size={14}/></a></div>)}</section>}
+
+    <CommunityStats network={network} account={account} />
 
     <footer><span>GM-GN © 2025</span><span>BUILT FOR THE ON-CHAIN COMMUNITY</span></footer>
   </main>;
