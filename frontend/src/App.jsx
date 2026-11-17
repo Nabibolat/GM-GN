@@ -1,5 +1,5 @@
 import { useEffect, useMemo, useState } from "react";
-import { BrowserProvider, Contract } from "ethers";
+import { BrowserProvider, Contract, JsonRpcProvider } from "ethers";
 import { Sun, Moon, Wallet, ChevronDown, ExternalLink, CheckCircle2, AlertCircle, LoaderCircle, Network } from "lucide-react";
 import CommunityStats from "./CommunityStats.jsx";
 
@@ -50,7 +50,7 @@ function shortAddress(value) {
 
 export default function App() {
   const [account, setAccount] = useState("");
-  const [chainId, setChainId] = useState(null);
+  const [chainId, setChainId] = useState(8453);
   const [busy, setBusy] = useState("");
   const [notice, setNotice] = useState(null);
   const [counts, setCounts] = useState({ gm: "—", gn: "—" });
@@ -94,7 +94,9 @@ export default function App() {
     async function loadCounts() {
       if (!network || !configured) { setCounts({ gm: "—", gn: "—" }); return; }
       try {
-        const provider = new BrowserProvider(window.ethereum);
+        const provider = window.ethereum
+          ? new BrowserProvider(window.ethereum)
+          : new JsonRpcProvider(network.rpc, network.id);
         const contract = new Contract(contractAddress, ABI, provider);
         const [gm, gn] = await Promise.all([contract.totalGM(), contract.totalGN()]);
         if (!cancelled) setCounts({ gm: gm.toString(), gn: gn.toString() });
