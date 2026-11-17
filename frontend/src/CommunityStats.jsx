@@ -239,9 +239,10 @@ export default function CommunityStats({ network, account }) {
       {!me ? <div className="empty-state">Connect your wallet to view your achievements.</div> : badges.map(b =>
         <div className={"badge-tile " + (b.earned ? "earned" : "locked")} key={b.id}><span>{b.icon}</span><strong>{b.title}</strong><small>{b.description}</small><em>{b.earned ? "UNLOCKED" : "LOCKED"}</em></div>)}
     </div>}
-    <div className="community-footnote">
+    {data && <div className="community-footnote">
       <span>{data.partialHistory ? "Recent event window only: this RPC does not expose full historical state. " : "Full contract event history scanned. "}XP and rankings are calculated from public events on {network.name}. Dates use UTC.</span>
       {updatedAt && <span>Updated {updatedAt.toLocaleTimeString()}</span>}
-    </div>
+    </div>}
+    {!data && !loading && !error && <div className="community-footnote">Community activity has not loaded yet.</div>}
   </section>;
 }
