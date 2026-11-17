@@ -85,7 +85,7 @@ function calculateProfile(wallet, rows) {
 async function findDeploymentBlock(provider, address, latest) {
   const key = `gmgn:deployment:${address.toLowerCase()}`;
   const cached = Number(localStorage.getItem(key));
-  if (Number.isSafeInteger(cached) && cached >= 0 && cached <= latest) return cached;
+  if (Number.isSafeInteger(cached) && cached >= 0 && cached <= latest) return { block: cached, complete: true };
   const latestCode = await provider.getCode(address, latest);
   if (!latestCode || latestCode === "0x") throw new Error("Contract code was not found on this network.");
   try {
@@ -98,16 +98,17 @@ async function findDeploymentBlock(provider, address, latest) {
       else low = mid + 1;
     }
     localStorage.setItem(key, String(low));
-    return low;
+    return { block: low, complete: true };
   } catch {
-    return Math.max(0, latest - 1000000);
+    return { block: Math.max(0, latest - 1000000), complete: false };
   }
 }
 
 async function readCommunity(provider, address, onProgress) {
   const contract = new Contract(address, ABI, provider);
   const latest = await provider.getBlockNumber();
-  const fromBlock = await findDeploymentBlock(provider, address, latest);
+  const deployment = await findDeploymentBlock(provider, address, latest);
+  const fromBlock = deployment.block;
   const rows = [];
   let cursor = fromBlock;
   let step = 500000;
@@ -139,7 +140,7 @@ async function readCommunity(provider, address, onProgress) {
     }
   }
   const [totalGM, totalGN] = await Promise.all([contract.totalGM(), contract.totalGN()]);
-  return { rows, totalGM: totalGM.toString(), totalGN: totalGN.toString(), fromBlock, latest };
+  return { rows, totalGM: totalGM.toString(), totalGN: totalGN.toString(), fromBlock, latest, partialHistory: !deployment.complete };
 }
 
 export default function CommunityStats({ network, account }) {
@@ -237,7 +238,7 @@ export default function CommunityStats({ network, account }) {
         <div className={"badge-tile " + (b.earned ? "earned" : "locked")} key={b.id}><span>{b.icon}</span><strong>{b.title}</strong><small>{b.description}</small><em>{b.earned ? "UNLOCKED" : "LOCKED"}</em></div>)}
     </div>}
     <div className="community-footnote">
-      <span>XP and rankings are calculated from public contract events on {network.name}. Dates use UTC.</span>
+      <span>{data.partialHistory ? "Recent event window only: this RPC does not expose full historical state. " : "Full contract event history scanned. "}XP and rankings are calculated from public events on {network.name}. Dates use UTC.</span>
       {updatedAt && <span>Updated {updatedAt.toLocaleTimeString()}</span>}
     </div>
   </section>;
